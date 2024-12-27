@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surpresa Romântica</title>
+    <style>
+        /* Estilos gerais */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            background: linear-gradient(to bottom right, #ffcccc, #ffe6e6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            background: #ff6b81;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            position: absolute;
+            transition: transform 0.2s ease-in-out;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        button:active {
+            transform: scale(0.9);
+        }
+        .hidden {
+            display: none;
+        }
+        .surprise {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1 {
+            color: #ff4081;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px #ffc1cc;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #333;
+            margin: 10px 20px;
+        }
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Botão Fujão -->
+        <button id="botao">Clique aqui para acabar o amor ❤️</button>
+
+        <!-- Surpresa Romântica -->
+        <div class="surprise">
+            <h1>Emilly, eu te amo! ❤️</h1>
+            <p>Você é minha inspiração, minha felicidade, e a razão dos meus melhores sorrisos. Cada momento com você é um tesouro que guardo no coração. 💕</p>
+            <div class="photo-gallery">
+                <img src="foto1.jpg" alt="Foto 1">
+                <img src="foto2.jpg" alt="Foto 2">
+                <img src="foto3.jpg" alt="Foto 3">
+                <!-- Adicione mais fotos se quiser -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const botao = document.getElementById("botao");
+        const surprise = document.querySelector(".surprise");
+        const container = document.querySelector(".container");
+        let fugaCount = 0; // Contador para limitar fugas
+
+        // Faz o botão fugir, mas limita o número de fugas
+        botao.addEventListener("mouseover", () => {
+            if (fugaCount < 5) { // Limita a 5 fugas
+                const x = Math.random() * (window.innerWidth - botao.offsetWidth);
+                const y = Math.random() * (window.innerHeight - botao.offsetHeight);
+                botao.style.left = `${x}px`;
+                botao.style.top = `${y}px`;
+                fugaCount++;
+            }
+        });
+
+        // Quando clicar, mostra a surpresa
+        botao.addEventListener("click", () => {
+            botao.classList.add("hidden");
+            surprise.style.display = "flex";
+            container.style.flexDirection = "column";
+        });
+    </script>
+</body>
+</html>
